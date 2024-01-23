@@ -3,11 +3,11 @@ using CardGames.Core.Decks;
 using Shouldly;
 using Xunit;
 
-namespace CardGames.Core.Tests.Decks
+namespace CardGames.Core.Tests
 {
-    public partial class DeckFactoryTests
+    static class DeckExtensions
     {
-        static void VerifyDeckContainsAllStandardCards(Deck deck)
+        internal static void VerifyContainsAllStandardCardsOnce(this Deck deck)
         {
             var suits = new[] { Suit.Hearts, Suit.Clubs, Suit.Diamonds, Suit.Spades };
             var ranks = new[]
@@ -37,7 +37,7 @@ namespace CardGames.Core.Tests.Decks
                 x => () => VerifyOneCardInDeck(deck, x.suit, x.rank)).ToArray());
         }
 
-        static void VerifyDeckContainsBothJokers(Deck deck)
+        internal static void VerifyContainsBothJokersOnce(this Deck deck)
         {
             Assert.Multiple(
                 () => VerifyOneCardInDeck(deck, Suit.RedJoker, Rank.Joker),

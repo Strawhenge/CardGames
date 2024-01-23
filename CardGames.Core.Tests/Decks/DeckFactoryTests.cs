@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CardGames.Core.Tests.Decks
 {
-    public partial class DeckFactoryTests
+    public class DeckFactoryTests
     {
         readonly DeckFactory _deckFactory;
 
@@ -25,7 +25,7 @@ namespace CardGames.Core.Tests.Decks
         {
             var deck = _deckFactory.CreateDeck();
 
-            VerifyDeckContainsAllStandardCards(deck);
+            deck.VerifyContainsAllStandardCardsOnce();
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace CardGames.Core.Tests.Decks
         {
             var deck = _deckFactory.CreateDeckWithJokers();
 
-            VerifyDeckContainsAllStandardCards(deck);
+            deck.VerifyContainsAllStandardCardsOnce();
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace CardGames.Core.Tests.Decks
         {
             var deck = _deckFactory.CreateDeckWithJokers();
 
-            VerifyDeckContainsBothJokers(deck);
+            deck.VerifyContainsBothJokersOnce();
         }
     }
 }
