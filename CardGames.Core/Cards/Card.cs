@@ -1,6 +1,6 @@
 ﻿namespace CardGames.Core.Cards
 {
-    public class Card
+    public partial class Card
     {
         internal Card(Rank rank, Suit suit)
         {

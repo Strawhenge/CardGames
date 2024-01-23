@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CardGames.Core.Deck
+namespace CardGames.Core.Decks
 {
     public class Deck
     {
