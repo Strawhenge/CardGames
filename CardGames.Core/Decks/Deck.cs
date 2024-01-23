@@ -1,5 +1,6 @@
 ﻿using CardGames.Core.Cards;
 using CardGames.Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,6 +18,26 @@ namespace CardGames.Core.Decks
         }
 
         public IReadOnlyList<Card> Cards => _cards.AsReadOnly();
+
+        public void Add(Card card)
+        {
+            if (card == null)
+                throw new ArgumentNullException(nameof(card));
+            if (_cards.Contains(card))
+                throw new InvalidOperationException("Card already in deck.");
+
+            _cards.Add(card);
+        }
+
+        public Card DrawCard()
+        {
+            if (!_cards.Any()) throw new CannotDrawCardException();
+
+            var card = _cards.First();
+            _cards.Remove(card);
+
+            return card;
+        }
 
         public void Shuffle()
         {

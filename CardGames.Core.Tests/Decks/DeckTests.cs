@@ -1,4 +1,5 @@
-﻿using CardGames.Core.Decks;
+﻿using CardGames.Core.Cards;
+using CardGames.Core.Decks;
 using CardGames.Core.Utilities;
 using Shouldly;
 using Xunit;
@@ -29,6 +30,27 @@ namespace CardGames.Core.Tests.Decks
             _testOutputHelper.OutputDeck(deck);
 
             deck.Cards.ShouldBe(originalCards, ignoreOrder: true);
+        }
+
+        [Fact]
+        public void Card_should_be_removed_from_deck_when_drawn()
+        {
+            var deck = _deckFactory.CreateDeckWithJokers();
+
+            var card = deck.DrawCard();
+
+            deck.Cards.ShouldNotContain(card);
+        }
+
+        [Fact]
+        public void Card_should_be_at_bottom_of_deck_when_added()
+        {
+            var deck = _deckFactory.CreateDeckWithJokers();
+            var card = Card.AceOfSpades;
+
+            deck.Add(card);
+
+            deck.Cards[deck.Cards.Count - 1].ShouldBe(card);
         }
     }
 }
