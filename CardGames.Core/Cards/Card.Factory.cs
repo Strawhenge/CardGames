@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CardGames.Core.Cards
+﻿namespace CardGames.Core.Cards
 {
     public partial class Card
     {

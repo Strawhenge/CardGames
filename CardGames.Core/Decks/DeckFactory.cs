@@ -1,5 +1,6 @@
 ﻿using CardGames.Core.Cards;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CardGames.Core.Decks
 {
@@ -12,7 +13,14 @@ namespace CardGames.Core.Decks
             return new Deck(cards);
         }
 
-        IEnumerable<Card> GetAllStandardCards()
+        public Deck CreateDeckWithJokers()
+        {
+            var cards = GetAllStandardCards().Concat(GetJokers());
+
+            return new Deck(cards);
+        }
+
+        static IEnumerable<Card> GetAllStandardCards()
         {
             yield return Card.TwoOfHearts;
             yield return Card.ThreeOfHearts;
@@ -66,6 +74,12 @@ namespace CardGames.Core.Decks
             yield return Card.QueenOfSpades;
             yield return Card.KingOfSpades;
             yield return Card.AceOfSpades;
+        }
+
+        static IEnumerable<Card> GetJokers()
+        {
+            yield return Card.RedJoker;
+            yield return Card.BlackJoker;
         }
     }
 }

@@ -1,11 +1,6 @@
 ﻿using CardGames.Core.Cards;
 using CardGames.Core.Decks;
 using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace CardGames.Core.Tests.Decks
@@ -38,15 +33,22 @@ namespace CardGames.Core.Tests.Decks
                 foreach (var rank in ranks)
                     expectedSuitRankCombinations.Add((suit, rank));
 
-            Assert.Multiple(expectedSuitRankCombinations
-                .Select<(Suit suit, Rank rank), Action>(x => () => VerifyCard(x.suit, x.rank)).ToArray());
+            Assert.Multiple(expectedSuitRankCombinations.Select<(Suit suit, Rank rank), Action>(
+                x => () => VerifyOneCardInDeck(deck, x.suit, x.rank)).ToArray());
+        }
 
-            void VerifyCard(Suit suit, Rank rank)
-            {
-                var matchingCards = deck.Cards.Where(card => card.Suit == suit && card.Rank == rank);
+        static void VerifyDeckContainsBothJokers(Deck deck)
+        {
+            Assert.Multiple(
+                () => VerifyOneCardInDeck(deck, Suit.RedJoker, Rank.Joker),
+                () => VerifyOneCardInDeck(deck, Suit.BlackJoker, Rank.Joker));
+        }
 
-                matchingCards.ShouldHaveSingleItem($"Suit: {suit}, Rank: {rank}");
-            }
+        static void VerifyOneCardInDeck(Deck deck, Suit suit, Rank rank)
+        {
+            var matchingCards = deck.Cards.Where(card => card.Suit == suit && card.Rank == rank);
+
+            matchingCards.ShouldHaveSingleItem($"Suit: {suit}, Rank: {rank}");
         }
     }
 }

@@ -1,11 +1,4 @@
-﻿using CardGames.Core.Cards;
-using CardGames.Core.Decks;
-using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CardGames.Core.Decks;
 using Xunit;
 
 namespace CardGames.Core.Tests.Decks
@@ -33,6 +26,30 @@ namespace CardGames.Core.Tests.Decks
             var deck = _deckFactory.CreateDeck();
 
             VerifyDeckContainsAllStandardCards(deck);
+        }
+
+        [Fact]
+        public void Deck_with_jokers_should_contain_54_cards()
+        {
+            var deck = _deckFactory.CreateDeckWithJokers();
+
+            Assert.Equal(54, deck.Cards.Count);
+        }
+
+        [Fact]
+        public void Deck_with_jokers_should_contain_all_standard_cards()
+        {
+            var deck = _deckFactory.CreateDeckWithJokers();
+
+            VerifyDeckContainsAllStandardCards(deck);
+        }
+
+        [Fact]
+        public void Deck_with_jokers_should_contain_both_jokers()
+        {
+            var deck = _deckFactory.CreateDeckWithJokers();
+
+            VerifyDeckContainsBothJokers(deck);
         }
     }
 }
