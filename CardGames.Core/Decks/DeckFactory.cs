@@ -1,4 +1,5 @@
 ﻿using CardGames.Core.Cards;
+using CardGames.Core.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,18 +7,25 @@ namespace CardGames.Core.Decks
 {
     public class DeckFactory
     {
+        readonly IRandomIntGenerator _random;
+
+        public DeckFactory(IRandomIntGenerator random)
+        {
+            _random = random;
+        }
+
         public Deck CreateDeck()
         {
             var cards = GetAllStandardCards();
 
-            return new Deck(cards);
+            return new Deck(_random, cards);
         }
 
         public Deck CreateDeckWithJokers()
         {
             var cards = GetAllStandardCards().Concat(GetJokers());
 
-            return new Deck(cards);
+            return new Deck(_random, cards);
         }
 
         static IEnumerable<Card> GetAllStandardCards()

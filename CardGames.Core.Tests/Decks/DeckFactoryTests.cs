@@ -1,4 +1,5 @@
 ﻿using CardGames.Core.Decks;
+using CardGames.Core.Utilities;
 using Xunit;
 
 namespace CardGames.Core.Tests.Decks
@@ -9,7 +10,7 @@ namespace CardGames.Core.Tests.Decks
 
         public DeckFactoryTests()
         {
-            _deckFactory = new DeckFactory();
+            _deckFactory = new DeckFactory(new SystemRandomNumberGenerator());
         }
 
         [Fact]
