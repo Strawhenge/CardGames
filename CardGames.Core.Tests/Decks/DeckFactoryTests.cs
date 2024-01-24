@@ -10,7 +10,8 @@ namespace CardGames.Core.Tests.Decks
 
         public DeckFactoryTests()
         {
-            _deckFactory = new DeckFactory(new SystemRandomNumberGenerator());
+            _deckFactory = new DeckFactory(
+                new CardShuffler(new SystemRandomNumberGenerator()));
         }
 
         [Fact]

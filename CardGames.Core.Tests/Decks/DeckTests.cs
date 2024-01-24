@@ -14,7 +14,8 @@ namespace CardGames.Core.Tests.Decks
 
         public DeckTests(ITestOutputHelper testOutputHelper)
         {
-            _deckFactory = new DeckFactory(new SystemRandomNumberGenerator());
+            _deckFactory = new DeckFactory(
+                new CardShuffler(new SystemRandomNumberGenerator()));
             _testOutputHelper = testOutputHelper;
         }
 

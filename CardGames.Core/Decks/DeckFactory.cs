@@ -7,25 +7,25 @@ namespace CardGames.Core.Decks
 {
     public class DeckFactory
     {
-        readonly IRandomIntGenerator _random;
+        readonly ICardShuffler _shuffler;
 
-        public DeckFactory(IRandomIntGenerator random)
+        public DeckFactory(ICardShuffler shuffler)
         {
-            _random = random;
+            _shuffler = shuffler;
         }
 
         public Deck CreateDeck()
         {
             var cards = GetAllStandardCards();
 
-            return new Deck(_random, cards);
+            return new Deck(_shuffler, cards);
         }
 
         public Deck CreateDeckWithJokers()
         {
             var cards = GetAllStandardCards().Concat(GetJokers());
 
-            return new Deck(_random, cards);
+            return new Deck(_shuffler, cards);
         }
 
         static IEnumerable<Card> GetAllStandardCards()

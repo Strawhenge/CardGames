@@ -8,12 +8,12 @@ namespace CardGames.Core.Decks
 {
     public class Deck
     {
-        readonly IRandomIntGenerator _random;
+        readonly ICardShuffler _shuffler;
         readonly List<Card> _cards;
 
-        public Deck(IRandomIntGenerator random, IEnumerable<Card> cards)
+        public Deck(ICardShuffler shuffler, IEnumerable<Card> cards)
         {
-            _random = random;
+            _shuffler = shuffler;
             _cards = cards.ToList();
         }
 
@@ -41,15 +41,9 @@ namespace CardGames.Core.Decks
 
         public void Shuffle()
         {
-            var remainingCards = _cards.ToList();
+            var newCardOrder = _shuffler.Shuffle(_cards);
             _cards.Clear();
-
-            while (remainingCards.Any())
-            {
-                var card = remainingCards.ElementAt(_random.Generate(0, remainingCards.Count));
-                remainingCards.Remove(card);
-                _cards.Add(card);
-            }
+            _cards.AddRange(newCardOrder);
         }
     }
 }
