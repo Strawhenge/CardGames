@@ -53,5 +53,18 @@ namespace Shithead.Tests
             Assert.False(
                 _cardplayability.CanPlay(card));
         }
+
+        [Fact]
+        public void Card_higher_than_last_played_should_be_playable()
+        {
+            _wastepile.Add(
+                 Card.FourOfClubs,
+                 Card.SevenOfClubs);
+
+            var card = Card.EightOfSpades;
+
+            Assert.True(
+                _cardplayability.CanPlay(card));
+        }
     }
 }
