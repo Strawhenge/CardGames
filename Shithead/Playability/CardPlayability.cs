@@ -21,7 +21,13 @@ namespace Shithead.Playability
             _wastepile.Added += OnAddedToWastepile;
         }
 
-        public bool CanPlay(Card card) => _state.CanPlay(card);
+        public bool CanPlay(Card card)
+        {
+            if (_rules.IsInvisibleCard(card))
+                return true;
+
+            return _state.CanPlay(card);
+        }
 
         void OnWastepileCleared() => _state = State.EmptyWastepile;
 
