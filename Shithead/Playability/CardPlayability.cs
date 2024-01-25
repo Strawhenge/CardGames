@@ -33,6 +33,9 @@ namespace Shithead.Playability
 
         void OnAddedToWastepile(Card card)
         {
+            if (_rules.IsInvisibleCard(card))
+                return;
+
             if (_rules.IsReverseCard(card))
             {
                 _state = State.MustBeLowerOrEqualTo(card.Rank);

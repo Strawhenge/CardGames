@@ -42,5 +42,31 @@ namespace Shithead.Tests.CardPlayabilityTests
             Assert.True(
                 _cardplayability.CanPlay(card));
         }
+
+        [Fact]
+        public void Higher_card_than_before_invisible_should_be_playable()
+        {
+            _wastepile.Add(
+                Card.NineOfClubs,
+                Card.ThreeOfHearts);
+
+            var card = Card.JackOfClubs;
+
+            Assert.True(
+                _cardplayability.CanPlay(card));
+        }
+
+        [Fact]
+        public void Lower_card_than_before_invisible_should_not_be_playable()
+        {
+            _wastepile.Add(
+                Card.NineOfClubs,
+                Card.ThreeOfHearts);
+
+            var card = Card.FiveOfClubs;
+
+            Assert.False(
+                _cardplayability.CanPlay(card));
+        }
     }
 }
