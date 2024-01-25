@@ -18,7 +18,7 @@ namespace Shithead.Tests.CardPlayabilityTests
         public OrdinaryCards()
         {
             _wastepile = new Wastepile();
-            _cardplayability = new CardPlayability(StandardRules.Instance, _wastepile);
+            _cardplayability = new CardPlayability(new GameRules(), _wastepile);
         }
 
         [Fact]

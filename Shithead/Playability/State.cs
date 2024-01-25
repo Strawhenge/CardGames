@@ -9,6 +9,9 @@ namespace Shithead.Playability
         public static State MustBeHigherOrEqualTo(Rank rank) =>
             new MustBeHigherOrEqualTo(rank);
 
+        public static State MustBeLowerOrEqualTo(Rank rank) =>
+            new MustBeLowerOrEqualTo(rank);
+
         public abstract bool CanPlay(Card card);
     }
 }

@@ -9,11 +9,11 @@ namespace Shithead.Playability
 {
     public class CardPlayability
     {
-        readonly IRules _rules;
+        readonly IRulesAccessor _rules;
         readonly Wastepile _wastepile;
         State _state = new EmptyWastepile();
 
-        public CardPlayability(IRules rules, Wastepile wastepile)
+        public CardPlayability(IRulesAccessor rules, Wastepile wastepile)
         {
             _rules = rules;
             _wastepile = wastepile;
@@ -27,6 +27,12 @@ namespace Shithead.Playability
 
         void OnAddedToWastepile(Card card)
         {
+            if (_rules.IsReverseCard(card))
+            {
+                _state = State.MustBeLowerOrEqualTo(card.Rank);
+                return;
+            }
+
             _state = State.MustBeHigherOrEqualTo(card.Rank);
         }
     }
