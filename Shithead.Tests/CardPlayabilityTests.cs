@@ -1,5 +1,6 @@
 ﻿using CardGames.Core.Cards;
 using Shithead.Playability;
+using Shithead.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Shithead.Tests
         public CardPlayabilityTests()
         {
             _wastepile = new Wastepile();
-            _cardplayability = new CardPlayability(_wastepile);
+            _cardplayability = new CardPlayability(StandardRules.Instance, _wastepile);
         }
 
         [Fact]
