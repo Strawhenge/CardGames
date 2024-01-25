@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Shithead.Tests
+namespace Shithead.Tests.CardPlayabilityTests
 {
-    public class CardPlayabilityTests
+    public class OrdinaryCards
     {
         readonly Wastepile _wastepile;
         readonly CardPlayability _cardplayability;
 
-        public CardPlayabilityTests()
+        public OrdinaryCards()
         {
             _wastepile = new Wastepile();
             _cardplayability = new CardPlayability(StandardRules.Instance, _wastepile);
