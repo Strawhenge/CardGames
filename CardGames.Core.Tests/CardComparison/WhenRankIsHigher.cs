@@ -1,11 +1,5 @@
 ﻿using CardGames.Core.Cards;
 using CardGames.Core.Cards.Order;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace CardGames.Core.Tests.CardComparison
