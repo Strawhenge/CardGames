@@ -9,7 +9,7 @@ namespace CardGames.Core.Tests.CardComparison
         [Theory, MemberData(nameof(Cases))]
         public void Card_should_not_be_higher(Card card, Card other, CardOrder order)
         {
-            Assert.True(
+            Assert.False(
                 card.IsRankHigherThan(other, order));
         }
 
@@ -30,7 +30,7 @@ namespace CardGames.Core.Tests.CardComparison
         [Theory, MemberData(nameof(Cases))]
         public void Card_should_be_lower_or_same(Card card, Card other, CardOrder order)
         {
-            Assert.False(
+            Assert.True(
                 card.IsRankLowerThanOrSameAs(other, order));
         }
 
