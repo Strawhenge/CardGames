@@ -7,6 +7,8 @@ namespace Shithead.Rules
     {
         CardOrder CardOrder { get; }
 
+        bool IsAnytimeCard(Card card);
+
         bool IsInvisibleCard(Card card);
 
         bool IsReverseCard(Card card);

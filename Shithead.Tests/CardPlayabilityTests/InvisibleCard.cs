@@ -10,6 +10,7 @@ using Xunit;
 
 namespace Shithead.Tests.CardPlayabilityTests
 {
+
     public class InvisibleCard
     {
         const Rank InvisibleCardRank = Rank.Three;
@@ -25,22 +26,6 @@ namespace Shithead.Tests.CardPlayabilityTests
             rules.SetInvisible(InvisibleCardRank);
 
             _cardplayability = new CardPlayability(rules, _wastepile);
-        }
-
-        [Fact]
-        public void Invisible_card_should_always_be_playable()
-        {
-            _wastepile.Add(Card.TwoOfClubs);
-
-            var card = Card.ThreeOfClubs;
-
-            Assert.True(
-                _cardplayability.CanPlay(card));
-
-            _wastepile.Add(Card.NineOfClubs);
-
-            Assert.True(
-                _cardplayability.CanPlay(card));
         }
 
         [Fact]

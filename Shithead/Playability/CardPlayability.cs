@@ -23,7 +23,7 @@ namespace Shithead.Playability
 
         public bool CanPlay(Card card)
         {
-            if (_rules.IsInvisibleCard(card))
+            if (_rules.IsAnytimeCard(card))
                 return true;
 
             return _state.CanPlay(card);
