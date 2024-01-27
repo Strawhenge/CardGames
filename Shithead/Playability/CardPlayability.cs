@@ -38,11 +38,11 @@ namespace Shithead.Playability
 
             if (_rules.IsReverseCard(card))
             {
-                _state = State.MustBeLowerOrEqualTo(card.Rank);
+                _state = State.MustBeLowerOrEqualTo(card, _rules.CardOrder);
                 return;
             }
 
-            _state = State.MustBeHigherOrEqualTo(card.Rank);
+            _state = State.MustBeHigherOrEqualTo(card, _rules.CardOrder);
         }
     }
 }

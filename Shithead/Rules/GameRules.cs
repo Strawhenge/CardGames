@@ -1,4 +1,5 @@
 ﻿using CardGames.Core.Cards;
+using CardGames.Core.Cards.Order;
 using System;
 
 namespace Shithead.Rules
@@ -7,6 +8,8 @@ namespace Shithead.Rules
     {
         Rank? invisibleCardRank;
         Rank? reverseCardRank;
+
+        public CardOrder CardOrder => CardOrder.AceIsHigh;
 
         public bool IsInvisibleCard(Card card) =>
             invisibleCardRank.HasValue && card.Rank == invisibleCardRank.Value;

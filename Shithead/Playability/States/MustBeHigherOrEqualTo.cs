@@ -1,16 +1,22 @@
 ﻿using CardGames.Core.Cards;
+using CardGames.Core.Cards.Order;
 
 namespace Shithead.Playability
 {
     class MustBeHigherOrEqualTo : State
     {
-        readonly Rank _rank;
+        readonly Card _card;
+        readonly CardOrder _order;
 
-        public MustBeHigherOrEqualTo(Rank rank)
+        public MustBeHigherOrEqualTo(Card card, CardOrder order)
         {
-            _rank = rank;
+            _card = card;
+            _order = order;
         }
 
-        public override bool CanPlay(Card card) => card.Rank >= _rank;
+        public override bool CanPlay(Card card)
+        {
+            return card.IsRankHigherThanOrSameAs(_card, _order);
+        }
     }
 }
