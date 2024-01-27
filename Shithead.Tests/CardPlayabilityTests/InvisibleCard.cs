@@ -1,11 +1,6 @@
 ﻿using CardGames.Core.Cards;
 using Shithead.Playability;
 using Shithead.Rules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Shithead.Tests.CardPlayabilityTests

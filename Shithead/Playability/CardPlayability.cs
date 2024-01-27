@@ -1,9 +1,5 @@
 ﻿using CardGames.Core.Cards;
 using Shithead.Rules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Shithead.Playability
 {
@@ -11,7 +7,7 @@ namespace Shithead.Playability
     {
         readonly IRulesAccessor _rules;
         readonly Wastepile _wastepile;
-        State _state = new EmptyWastepile();
+        State _state = State.EmptyWastepile;
 
         public CardPlayability(IRulesAccessor rules, Wastepile wastepile)
         {
